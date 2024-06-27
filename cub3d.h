@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 00:33:55 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/06/27 01:01:39 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/06/27 01:47:48 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_map
 	char	*west_texture_path;
 	int		floor[3];
 	int		ceiling[3];
+	int		map_width;
+	int		map_height;
 	char	**map;
 }	t_map;
 

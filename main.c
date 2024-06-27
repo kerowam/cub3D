@@ -6,21 +6,11 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:56:13 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/06/27 01:00:05 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/06/27 01:16:13 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*int	ft_strlen(char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}*/
 
 int	check_file_name(char *argv)
 {
