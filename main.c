@@ -6,46 +6,38 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:56:13 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/06/27 01:16:13 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/06/30 16:46:47 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_file_name(char *argv)
+t_map	init_map(void)
 {
-	int	i;
+	t_map	info_map;
+	int		i;
 
-	i = ft_strlen(argv) - 1;
-	if (argv[i] == 'b' && argv[i - 1] == 'u' && argv[i - 2] == 'c'
-		&& argv[i - 3] == '.')
-		return (1);
-	return (0);
-}
-
-void	check_args(int argc, char **argv)
-{
-	int	fd;
-
-	if (argc != 2)
+	info_map.north_texture_path = NULL;
+	info_map.south_texture_path = NULL;
+	info_map.east_texture_path = NULL;
+	info_map.west_texture_path = NULL;
+	i = 0;
+	while (i < 3)
 	{
-		write(2, "Error: Wrong number of arguments\n", 33);
-		printf("Usage: ./cub3d <map_name>.cub\n");
-		exit(1);
-		return ;
+		info_map.floor[i] = -1;
+		info_map.ceiling[i] = -1;
+		i++;
 	}
-	fd = open(argv[1], O_RDONLY);
-	close(fd);
-	if (fd < 0 || !check_file_name(argv[1]))
-	{
-		write(2, "Error: Invalid file\n", 20);
-		printf("Usage: ./cub3d <map_name>.cub\n");
-		exit(1);
-	}
-	return ;
+	info_map.map_width = 0;
+	info_map.map_height = 0;
+	info_map.map = NULL;
+	return (info_map);
 }
 
 int	main(int argc, char **argv)
 {
+	t_map	info_map;
+
 	check_args(argc, argv);
+	info_map = init_map();
 }

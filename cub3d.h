@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 00:33:55 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/06/27 01:47:48 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/06/30 16:34:46 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ typedef struct s_map
 	int		map_height;
 	char	**map;
 }	t_map;
+
+// check_args.c
+
+void	check_args(int argc, char **argv);
 
 #endif

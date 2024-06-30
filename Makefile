@@ -6,7 +6,7 @@
 #    By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 23:20:55 by gfredes-          #+#    #+#              #
-#    Updated: 2024/06/27 00:50:29 by gfredes-         ###   ########.fr        #
+#    Updated: 2024/06/30 16:33:59 by gfredes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 CLEAN = rm -f
 
 SRC =	main.c \
+		check_args.c \
 
 #SRC_BONUS =	
 
