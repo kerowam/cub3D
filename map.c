@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 04:07:32 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 05:56:50 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:50:03 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	check_line_map(char *line)
 	int	map;
 
 	i = 0;
+	map = 0;
 	while (line[i] == ' ')
 		i++;
 	while (line[i])
@@ -90,11 +91,11 @@ int	check_line_map(char *line)
 			|| line[i] == 'N' || line[i] == 'E' || line[i] == 'S'
 			|| line[i] == 'W' || line[i] == '\n')
 		{
-			i++;
 			if (line[i] == '1' || line[i] == '0'
 				|| line[i] == 'N' || line[i] == 'E'
 				|| line[i] == 'S' || line[i] == 'W')
 				map++;
+			i++;
 		}
 		else
 			return (0);
@@ -111,6 +112,7 @@ void	get_width(char *line, t_map *info_map)
 	int	width;
 
 	i = 0;
+	width = 0;
 	while (line[i])
 	{
 		if (line[i] == ' ' || line[i] == '\n')
@@ -134,8 +136,36 @@ void	get_map(char *line, t_map *info_map, int *n)
 	if (check_line_map(line))
 	{
 		info_map->map[y] = ft_strdup(line);
-		get_width(line, info_map);
 		*n += 1;
+	}
+}
+
+void	get_map_size(int fd, t_map *info_map)
+{
+	char	*line;
+	int		count;
+
+	line = NULL;
+	count = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		if (check_line_map(line))
+		{
+			count++;
+			if (count > 6)
+				get_width(line, info_map);
+		}
+	}
+	info_map->map_height = count - 6;
+	info_map->map = (char **)malloc(sizeof(char *) * info_map->map_height);
+	count = 0;
+	while (count < info_map->map_height)
+	{
+		info_map->map[count] = (char *)malloc(info_map->map_width + 1);
+		count++;
 	}
 }
 
@@ -154,6 +184,9 @@ void	get_map_info(char *file, t_map *info_map)
 		exit(1);
 		return ;
 	}
+	get_map_size(fd, info_map);
+	close(fd);
+	fd = open(file, O_RDONLY);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -170,6 +203,5 @@ void	get_map_info(char *file, t_map *info_map)
 			get_map(line, info_map, &n);
 		free(line);
 	}
-	info_map->map_height = n - 6;
 	close (fd);
 }

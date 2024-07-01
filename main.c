@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:56:13 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 06:11:51 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:53:33 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	print_map_info(t_map *info_map)
 	{
 		printf("%s", info_map->map[y]);
 		y++;
+
 	}
+	printf("\n");
 	//printf("\n%c\n", info_map->map[0][0]);
 }
 

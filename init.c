@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 04:04:14 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 06:01:03 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:47:20 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ t_map	init_map(void)
 	}
 	info_map.map_width = 0;
 	info_map.map_height = 0;
-	//info_map.map = NULL;
+	info_map.map = NULL;
 	return (info_map);
 }
