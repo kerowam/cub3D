@@ -6,7 +6,7 @@
 #    By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 23:20:55 by gfredes-          #+#    #+#              #
-#    Updated: 2024/06/30 16:33:59 by gfredes-         ###   ########.fr        #
+#    Updated: 2024/07/01 04:10:39 by gfredes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,13 @@ CLEAN = rm -f
 
 SRC =	main.c \
 		check_args.c \
+		free.c \
+		init.c \
+		map.c \
 
 #SRC_BONUS =	
 
-CC = gcc
+CC = gcc -g
 
 OBJT = $(SRC:.c=.o)
 

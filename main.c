@@ -6,32 +6,20 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:56:13 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/06/30 16:46:47 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 04:10:16 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_map	init_map(void)
+void	print_map_info(t_map *info_map)
 {
-	t_map	info_map;
-	int		i;
-
-	info_map.north_texture_path = NULL;
-	info_map.south_texture_path = NULL;
-	info_map.east_texture_path = NULL;
-	info_map.west_texture_path = NULL;
-	i = 0;
-	while (i < 3)
-	{
-		info_map.floor[i] = -1;
-		info_map.ceiling[i] = -1;
-		i++;
-	}
-	info_map.map_width = 0;
-	info_map.map_height = 0;
-	info_map.map = NULL;
-	return (info_map);
+	printf("North texture: %s\n", info_map->north_texture_path);
+	printf("South texture: %s\n", info_map->south_texture_path);
+	printf("East texture: %s\n", info_map->east_texture_path);
+	printf("West texture: %s\n", info_map->west_texture_path);
+	printf("Floor: %d, %d, %d\n", info_map->floor[0], info_map->floor[1], info_map->floor[2]);
+	printf("Ceiling: %d, %d, %d\n", info_map->ceiling[0], info_map->ceiling[1], info_map->ceiling[2]);
 }
 
 int	main(int argc, char **argv)
@@ -40,4 +28,6 @@ int	main(int argc, char **argv)
 
 	check_args(argc, argv);
 	info_map = init_map();
+	get_map_info(argv[1], &info_map);
+	print_map_info(&info_map);
 }

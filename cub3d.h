@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 00:33:55 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/06/30 16:34:46 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 04:10:10 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,20 @@ typedef struct s_map
 // check_args.c
 
 void	check_args(int argc, char **argv);
+
+// init.c
+
+t_map	init_map(void);
+
+// free.c
+
+void	free_split(char **split);
+
+// map.c
+
+void	get_texture(char **texture, t_map *info_map);
+void	get_color(char **texture, t_map *info_map);
+void	get_textures_and_colors(char *line, t_map *info_map, int *n);
+void	get_map_info(char *file, t_map *info_map);
 
 #endif
