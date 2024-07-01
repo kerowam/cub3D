@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 00:33:55 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 04:10:10 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 21:23:32 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_map
 	int		ceiling[3];
 	int		map_width;
 	int		map_height;
+	int		map_status;
 	char	**map;
 }	t_map;
 

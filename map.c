@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 04:07:32 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 21:07:02 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 22:27:24 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	check_line_map(char *line)
 	{
 		if (line[i] == ' ' || line[i] == '1' || line[i] == '0'
 			|| line[i] == 'N' || line[i] == 'E' || line[i] == 'S'
-			|| line[i] == 'W' || line[i] == '\n')
+			|| line[i] == 'W' || line[i] == '\n' || line[i] == '\t')
 		{
 			if (line[i] == '1' || line[i] == '0'
 				|| line[i] == 'N' || line[i] == 'E'
@@ -115,8 +115,10 @@ void	get_width(char *line, t_map *info_map)
 	width = 0;
 	while (line[i])
 	{
-		if (line[i] == ' ' || line[i] == '\n')
+		if (line[i] == ' ' || line[i] == '\n' || line[i] == '\t')
 			i++;
+		/*else if (line[i] == '\t')
+			i += 4;*/
 		else if (line[i] == '1' || line[i] == '0' || line[i] == 'W'
 			|| line[i] == 'N' || line[i] == 'E' || line[i] == 'S')
 		{
@@ -162,14 +164,20 @@ void	get_map(char *line, t_map *info_map, int *n)
 	int	y;
 
 	y = *n - 6;
-	if (check_line_map(line))
+	if (!ft_strncmp(line, "\n", 2) && info_map->map_status == 1)
+		info_map->map_status = 2;
+	if (check_line_map(line) && (info_map->map_status == 0 || info_map->map_status == 1))
 	{
-		//info_map->map[y] = ft_strdup(line);
-		get_line_map(line, info_map, y);
-		*n += 1;
+		if (info_map->map_status == 0)
+			info_map->map_status = 1;
+		if (info_map->map_status == 1)
+		{
+			get_line_map(line, info_map, y);
+			*n += 1;
+		}
 	}
 	//else if...
-	else
+	else if (ft_strncmp(line, "\n", 2) && info_map->map_status == 2)
 	{
 		write (2, "Error: Invalid map\n", 19);
 		free (line);
@@ -229,7 +237,7 @@ void	get_map_info(char *file, t_map *info_map)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		while (n < 7 && !strcmp(line, "\n"))
+		while (n < 7 && !ft_strncmp(line, "\n", 2))
 		{
 			free(line);
 			line = get_next_line(fd);
