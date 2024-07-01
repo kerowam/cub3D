@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:56:13 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 04:10:16 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 06:11:51 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 void	print_map_info(t_map *info_map)
 {
+	int	y;
+
+	y = 0;
 	printf("North texture: %s\n", info_map->north_texture_path);
 	printf("South texture: %s\n", info_map->south_texture_path);
 	printf("East texture: %s\n", info_map->east_texture_path);
 	printf("West texture: %s\n", info_map->west_texture_path);
 	printf("Floor: %d, %d, %d\n", info_map->floor[0], info_map->floor[1], info_map->floor[2]);
 	printf("Ceiling: %d, %d, %d\n", info_map->ceiling[0], info_map->ceiling[1], info_map->ceiling[2]);
+	printf("Map_width: %d\n", info_map->map_width);
+	printf("Map_heigth: %d\n", info_map->map_height);
+	printf("Map:\n");
+	while (info_map->map[y])
+	{
+		printf("%s", info_map->map[y]);
+		y++;
+	}
+	//printf("\n%c\n", info_map->map[0][0]);
 }
 
 int	main(int argc, char **argv)
