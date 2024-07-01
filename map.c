@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 04:07:32 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 19:50:03 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 21:07:02 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,35 @@ void	get_width(char *line, t_map *info_map)
 		info_map->map_width = width;
 }
 
+void	get_line_map(char *line, t_map *info_map, int y)
+{
+	int	x;
+
+	x = 0;
+	info_map->map[y] = (char *)malloc(info_map->map_width + 1);
+	if (!info_map->map[y])
+	{
+		write (2, "Error: Invalid map\n", 19);
+		free (line);
+		exit (1);
+		return ;
+	}
+	while (x < info_map->map_width)
+	{
+		while (line[x] && line[x] != '\n')
+		{
+			info_map->map[y][x] = line[x];
+			x++;
+		}
+		while (x < info_map->map_width)
+		{
+			info_map->map[y][x] = ' ';
+			x++;
+		}
+		info_map->map[y][x] = '\0';
+	}
+}
+
 void	get_map(char *line, t_map *info_map, int *n)
 {
 	int	y;
@@ -135,8 +164,17 @@ void	get_map(char *line, t_map *info_map, int *n)
 	y = *n - 6;
 	if (check_line_map(line))
 	{
-		info_map->map[y] = ft_strdup(line);
+		//info_map->map[y] = ft_strdup(line);
+		get_line_map(line, info_map, y);
 		*n += 1;
+	}
+	//else if...
+	else
+	{
+		write (2, "Error: Invalid map\n", 19);
+		free (line);
+		exit (1);
+		return ;
 	}
 }
 
@@ -155,17 +193,16 @@ void	get_map_size(int fd, t_map *info_map)
 		if (check_line_map(line))
 		{
 			count++;
-			if (count > 6)
-				get_width(line, info_map);
+			get_width(line, info_map);
 		}
 	}
-	info_map->map_height = count - 6;
+	info_map->map_height = count;
 	info_map->map = (char **)malloc(sizeof(char *) * info_map->map_height);
-	count = 0;
-	while (count < info_map->map_height)
+	if (!info_map->map)
 	{
-		info_map->map[count] = (char *)malloc(info_map->map_width + 1);
-		count++;
+		write(2, "Error: Memory allocation failled\n", 33);
+		exit(1);
+		return ;
 	}
 }
 

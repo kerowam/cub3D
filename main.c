@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:56:13 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 19:53:33 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/01 21:07:25 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ void	print_map_info(t_map *info_map)
 	printf("Map:\n");
 	while (info_map->map[y])
 	{
-		printf("%s", info_map->map[y]);
+		/*size_t	len;
+
+		len = ft_strlen(info_map->map[y]);
+		printf("len line %d: %ld\n", y, len);*/
+		printf("%s\n", info_map->map[y]);
 		y++;
 
 	}
 	printf("\n");
-	//printf("\n%c\n", info_map->map[0][0]);
 }
 
 int	main(int argc, char **argv)
