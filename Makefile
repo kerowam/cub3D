@@ -6,7 +6,7 @@
 #    By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 23:20:55 by gfredes-          #+#    #+#              #
-#    Updated: 2024/07/01 04:10:39 by gfredes-         ###   ########.fr        #
+#    Updated: 2024/07/02 18:14:56 by gfredes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ SRC =	main.c \
 		free.c \
 		init.c \
 		map.c \
-
+		colors_and_textures.c \
+		error.c \
+		check_map.c \
+		map_size.c \
+		
 #SRC_BONUS =	
 
 CC = gcc -g

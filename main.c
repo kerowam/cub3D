@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:56:13 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/01 22:28:18 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/02 01:27:56 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	print_map_info(t_map *info_map)
 	printf("Map_width: %d\n", info_map->map_width);
 	printf("Map_heigth: %d\n", info_map->map_height);
 	printf("Map_status: %d\n", info_map->map_status);
+	printf("Player_view: %c\n", info_map->player_view);
 	printf("Map:\n");
 	while (info_map->map[y])
 	{
