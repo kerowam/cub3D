@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 00:33:55 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/02 18:14:06 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:55:02 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_map	init_map(void);
 // free.c
 
 void	free_split(char **split);
+void	free_map(t_map *info_map);
 
 // map.c
 

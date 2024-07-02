@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 22:56:13 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/02 01:27:56 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:54:33 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ int	main(int argc, char **argv)
 	info_map = init_map();
 	get_map_info(argv[1], &info_map);
 	print_map_info(&info_map);
+	free_map(&info_map);
 }

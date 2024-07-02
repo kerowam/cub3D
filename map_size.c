@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:12:12 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/07/02 18:13:09 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:57:41 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	get_map_size(int fd, t_map *info_map)
 	char	*line;
 	int		count;
 
-	line = NULL;
 	count = 0;
 	while (1)
 	{
@@ -57,6 +56,7 @@ void	get_map_size(int fd, t_map *info_map)
 			count++;
 			get_width(line, info_map);
 		}
+		free (line);
 	}
 	info_map->map_height = count;
 	info_map->map = (char **)malloc(sizeof(char *) * info_map->map_height);
